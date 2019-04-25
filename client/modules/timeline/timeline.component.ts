@@ -15,13 +15,12 @@ export class TimelineComponent implements OnInit {
   @ViewChild('closeBtn') closeBtn: ElementRef;
   @ViewChild('closeBtn2') closeBtn2: ElementRef;
 
-  isodd = false;
+  // isodd = false;
 
-  public get changeOdd() {
-    this.isodd = !this.isodd;
-    return true;
-  }
-
+  // public get changeOdd() {
+  //   this.isodd = !this.isodd;
+  //   return true;
+  // }
 
   events: any[];
   post_to_delete: any;

@@ -1,6 +1,26 @@
-<div class="timeline" *ngFor="let event of events">
-  <div *ngIf="changeOdd">
-    <div ngClass="{{isodd ? 'mycontainer left' : 'mycontainer right'}}">
+<div class="timeline" *ngFor="let event of events; let i=index">
+  <div *ngIf="i % 2 === 0">
+    <div class="mycontainer left">
+      <div class="content">
+        <span style="float:right;"><a><i (click)="setEdit(event._id)" data-toggle="modal" data-target="#editModal"
+              title="Edit" class="far fa-edit" aria-hidden="true"></i></a>
+          <a><i (click)="setDelete(event._id)" data-toggle="modal" data-target="#deleteModal" title="Delete"
+              class="fas fa-trash-alt" aria-hidden="true"></i></a></span>
+        <span>
+          <h3>{{event.title}}</h3>
+        </span>
+        <p>{{event.description}}</p>
+        <small>
+          <div class="timeline_time">{{event.date | date:'shortTime'}}</div>
+        </small>
+        <small>
+          <div class="timeline_date"><span>{{event.date | date:'EEEE'}} </span><span>{{event.date | date}}</span></div>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="i % 2 === 1">
+    <div class="mycontainer right">
       <div class="content">
         <span style="float:right;"><a><i (click)="setEdit(event._id)" data-toggle="modal" data-target="#editModal"
               title="Edit" class="far fa-edit" aria-hidden="true"></i></a>

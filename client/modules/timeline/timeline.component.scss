@@ -1,3 +1,7 @@
+$blue: #1c4663;
+$green: #096d5b;
+$grey: #aaaaaa;
+
 * {
     box-sizing: border-box;
 }
@@ -15,7 +19,7 @@
     content: '';
     position: absolute;
     width: 4px;
-    background-color: #092e47;
+    background-color: $blue;
     top: 0;
     bottom: 0;
     left: 50%;
@@ -37,8 +41,8 @@
     width: 30px;
     height: 30px;
     right: -14px;
-    background-color: #096d5b;
-    border: 2px solid #092e47;
+    background-color: $green;
+    border: 2px solid $blue;
     top: 15px;
     border-radius: 50%;
     z-index: 1;
@@ -69,9 +73,9 @@
     width: 0;
     z-index: 1;
     right: 30px;
-    border: medium solid #092e47;
+    border: medium solid $blue;
     border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent #092e47;
+    border-color: transparent transparent transparent $blue;
 }
 
 /* Add arrows to the right container (pointing left) */
@@ -83,64 +87,95 @@
     width: 0;
     z-index: 1;
     left: 30px;
-    border: medium solid #092e47;
+    border: medium solid $blue;
     border-width: 10px 10px 10px 0;
-    border-color: transparent #092e47 transparent transparent;
+    border-color: transparent $blue transparent transparent;
 }
 
 /* The actual content */
 .content {
     padding: 20px 30px;
-    background-color: #092e47;
+    background-color: $blue;
     position: relative;
     border-radius: 6px;
     color: white;
     font-size: 15px;
+
 }
 
-.left .timeline_time 
-{
-    color: #aaaaaa;
-    
-}
-.left .timeline_date
-{
-    color: #096d5b;
-    
-}
+// .left .content{
+//     -webkit-animation: slideInFromLeft  2s; /* Safari 4.0 - 8.0 */
+//     animation: slideInFromLeft  2s;
+// }
 
-.right .timeline_time 
-{
-    color: #aaaaaa;
-    
-}
-.right .timeline_date 
-{
-    color: #096d5b;
-    
-}
+// @keyframes slideInFromLeft {
+//     0% {
+//         transform: translateX(-100%);
+//     }
+//     100% {
+//         transform: translateX(0);
+//     }
+// }
 
+// @keyframes fadeIn {
+//     0% {
+//         opacity: 0;
+//     }
+//     100% {
+//         opacity: 1;
+//     }
+// }
 
-@media (min-width: 64rem)
+.left 
 {
-    .left .timeline_time
+    .timeline_time 
     {
-        position:absolute;width:100%;left:120%;top:5px;color: #aaaaaa;   
+        color: $grey;
     }
-    .left .timeline_date
+    .timeline_date
     {
-        position:absolute;width:100%;left:120%;top:25px;color: #096d5b;   
+        color: $green;
+    }
+}
+
+.right
+{ 
+    .timeline_time 
+    {
+        color: $grey;   
+    }
+    .timeline_date 
+    {
+        color: $green;   
+    }
+}
+
+// browser's window width should be minimum 1024px
+@media (min-width: 64rem)      
+{
+    .left 
+    {
+        .timeline_time
+        {
+            position:absolute;width:100%;left:120%;top:5px;color: $grey;   
+        }
+        .timeline_date
+        {
+            position:absolute;width:100%;left:120%;top:25px;color: $green;   
+        }
     }
 
-    .right .timeline_time
+    .right 
     {
-        text-align: right;position:absolute;width:100%;right:120%;top:5px;color: #aaaaaa;
+        .timeline_time
+        {
+            text-align: right;position:absolute;width:100%;right:120%;top:5px;color: $grey;
+        }
+        .timeline_date
+        {
+            text-align: right;position:absolute;width:100%;right:120%;top:25px;color: $green;  
+        }
     }
-    .right .timeline_date
-    {
-        text-align: right;position:absolute;width:100%;right:120%;top:25px;color: #096d5b;  
-    }
-
 }
 
 
@@ -161,9 +196,9 @@
     /* Make sure that all arrows are pointing leftwards */
     .mycontainer::before {
         left: 60px;
-        border: medium solid #092e47;
+        border: medium solid $blue;
         border-width: 10px 10px 10px 0;
-        border-color: transparent #092e47 transparent transparent;
+        border-color: transparent $blue transparent transparent;
     }
 
     /* Make sure all circles are at the same spot */
