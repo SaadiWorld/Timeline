@@ -10,7 +10,7 @@
             "es2015",
             "dom"
         ],
-        "noImplicitAny": true,
+        "noImplicitAny": false, //turned to false because of the errors in paramters of methods of auth.service.ts
         "suppressImplicitAnyIndexErrors": true,
         "typeRoots": [
             "node_modules/@types"

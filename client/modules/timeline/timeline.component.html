@@ -1,0 +1,95 @@
+<div class="timeline" *ngFor="let event of events">
+  <div *ngIf="changeOdd">
+    <div ngClass="{{isodd ? 'mycontainer left' : 'mycontainer right'}}">
+      <div class="content">
+        <span style="float:right;"><a><i (click)="setEdit(event._id)" data-toggle="modal" data-target="#editModal"
+              title="Edit" class="far fa-edit" aria-hidden="true"></i></a>
+          <a><i (click)="setDelete(event._id)" data-toggle="modal" data-target="#deleteModal" title="Delete"
+              class="fas fa-trash-alt" aria-hidden="true"></i></a></span>
+        <span>
+          <h3>{{event.title}}</h3>
+        </span>
+        <p>{{event.description}}</p>
+        <small>
+          <div class="timeline_time">{{event.date | date:'shortTime'}}</div>
+        </small>
+        <small>
+          <div class="timeline_date"><span>{{event.date | date:'EEEE'}} </span><span>{{event.date | date}}</span></div>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="list-group">
+  <div *ngFor="let event of events" class="list-group-item list-group-item-action">
+    <div>
+      <h4>{{event.title}}</h4>
+      <small>{{event.date | date:'EEEE'}}</small><br>
+      <small>{{event.date | date}}</small><br>
+      <small>{{event.date | date:'shortTime'}}</small><br>
+    </div>
+    <p><strong>Description: </strong>{{event.description}}</p>
+    <a><i (click)="setEdit(event._id)" data-toggle="modal" data-target="#editModal" title="Edit" class="far fa-edit"
+        aria-hidden="true"></i></a>
+    <a><i (click)="setDelete(event._id)" data-toggle="modal" data-target="#deleteModal" title="Delete"
+        class="fas fa-trash-alt" aria-hidden="true"></i></a>
+  </div>
+</div> -->
+
+
+<!-- Modal (Are you sure to delete?)-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Event</h5>
+        <button #closeBtn (click)="unsetDelete()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button (click)="deletePost()" type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal (To Edit)-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Event</h5>
+        <button type="button" #closeBtn2 (click)="unsetEdit()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <form (submit)="editEvent()">
+          <div class="form-group">
+            <label>Title</label>
+            <input [(ngModel)]="title" name="title" type="text" class="form-control" value="{{title}}">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea [(ngModel)]="description" name="description" class="form-control">{{description}}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
