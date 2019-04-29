@@ -4,14 +4,6 @@ import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router, RouterModule } from '@angular/router';
 
-
-
-// @NgModule({
-//   imports: [
-//     RouterModule
-//   ]
-// })
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

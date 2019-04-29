@@ -15,13 +15,6 @@ export class TimelineComponent implements OnInit {
   @ViewChild('closeBtn') closeBtn: ElementRef;
   @ViewChild('closeBtn2') closeBtn2: ElementRef;
 
-  // isodd = false;
-
-  // public get changeOdd() {
-  //   this.isodd = !this.isodd;
-  //   return true;
-  // }
-
   events: any[];
   post_to_delete: any;
   post_to_edit: any;
@@ -55,11 +48,8 @@ export class TimelineComponent implements OnInit {
     this.post_to_edit = event;
     this.authService.getEvent(this.post_to_edit).subscribe(res => {
       if ((res as any).success) {
-        // this.flashMessage.show('Event is deleted!', { cssClass: 'alert-success', timeout: 3000 });
         this.title = (res as any).title;
         this.description = (res as any).description;
-        //this.editEvent();
-        //this.closeBtn2.nativeElement.click();
       } else {
         this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
         this.router.navigate(['/timeline']);
@@ -68,7 +58,6 @@ export class TimelineComponent implements OnInit {
   }
 
   unsetEdit() {
-    // this.post_to_edit = null;
     this.title = null;
     this.description = null;
   }
@@ -76,7 +65,6 @@ export class TimelineComponent implements OnInit {
   deletePost() {
     this.authService.deletePost(this.post_to_delete).subscribe(res => {
       if ((res as any).success) {
-        // this.flashMessage.show('Event is deleted!', { cssClass: 'alert-success', timeout: 3000 });
         this.closeBtn.nativeElement.click();
         this.authService.gettimeline().subscribe(data => {
           console.log((data as any).success);
@@ -94,7 +82,6 @@ export class TimelineComponent implements OnInit {
   }
 
   editEvent() {
-    //this.unsetEdit();
     const id = this.post_to_edit;
     const event = {
       title: this.title,
@@ -120,4 +107,3 @@ export class TimelineComponent implements OnInit {
     });
   }
 }
-

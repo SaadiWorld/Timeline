@@ -1,5 +1,4 @@
 const User = require("../../../models/user");
-//var mongoosePaginate = require('mongoose-paginate-v2');
 
 var express = require('express');
 var router = express.Router();
@@ -29,11 +28,6 @@ module.exports = function (router) {
                 });
             }
             else {
-
-                // res.render('timeline', {
-                //     title: "Your timeline",
-                //     events: events
-                // });
                 return res.status(200).json({
                     success: true,
                     events: events
@@ -45,9 +39,6 @@ module.exports = function (router) {
 
     // 'Add Event' GET Route
     router.get('/add', checkAuth, function (req, res) {
-        // res.render('add_event', {
-        //     title: "Add new event"
-        // });
         return res.status(200).json({
             success: true,
             message: "You can view this page now!",
@@ -57,23 +48,6 @@ module.exports = function (router) {
 
     // 'Add Event' POST Route
     router.post('/add', checkAuth, function (req, res) {
-        // req.checkBody('title', 'Title is required').notEmpty();
-        // req.checkBody('description', 'Description is required').notEmpty();
-        // // req.checkBody('post_by', 'Post_By is required').notEmpty();
-
-        // // Get Errors
-        // let errors = req.validationErrors();
-
-        // if (errors) {
-        //     // res.render('add_event', {
-        //     //     title: 'Add new event',
-        //     //     errors: errors
-        //     // });
-        //     return res.status(200).json({
-        //         success: false,
-        //         message: "Something went wrong",
-        //     });
-        // } else {
         let event = new Event();
         event.title = req.body.title;
         event.description = req.body.description;
@@ -84,15 +58,12 @@ module.exports = function (router) {
                 console.log(err);
                 return;
             } else {
-                // req.flash('success', 'Event published on timeline');
-                // res.redirect('/timeline');
                 return res.status(200).json({
                     success: true,
                     message: "You can view this page now!",
                 });
             }
         });
-        //      }
     });
 
 
@@ -100,7 +71,6 @@ module.exports = function (router) {
     router.get('/edit/:id', checkAuth, function (req, res) {
         let query = { _id: req.params.id }
 
-        // Now we will update
         Event.findOne(query, function (err, event) {
             if (event.post_by != req.userData.userId) {
                 return res.status(401).json({
@@ -183,7 +153,6 @@ module.exports = function (router) {
                         message: "Something went wrong!",
                     });
                 }
-                // req.flash('success', 'Your event is successfully deleted.');
                 res.send({
                     success: "true",
                     status: "200",
@@ -191,7 +160,6 @@ module.exports = function (router) {
                     response: "success"
                 });
             })
-
         });
     });
 };

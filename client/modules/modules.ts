@@ -21,6 +21,9 @@ import { AuthService } from '../services/auth.service';
 import { FlashMessagesModule } from 'angular2-flash-messages/module';     // Adding '/module' saved me from error
 import { AuthGuard } from '../guards/auth.guard';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from '../services/token.interceptor';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
@@ -54,7 +57,13 @@ export function tokenGetter() {
         tokenGetter: tokenGetter
       }
     })],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
