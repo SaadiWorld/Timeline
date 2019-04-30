@@ -3,10 +3,6 @@
 var app = require('./index');
 var http = require('http');
 
-// const bodyParser = require('body-parser');
-// const nodemailer = require("nodemailer");
-
-
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var mongoString = require('./config/mongo.json').url;
@@ -25,13 +21,9 @@ mongoose.connect(mongoString, function (error, db) {
   }
 });
 
-
-
 var server = http.Server(app);
 server.listen(process.env.PORT || 8000);
 
 server.on('listening', function () {
   global.log.info('Server listening on http://localhost:%d', this.address().port);
 });
-
-
