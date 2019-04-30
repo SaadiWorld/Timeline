@@ -13,6 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Project Overview
 
 It is a Simple Timeline Application just like the timeline functionality that you see on Facebook, where a user first registers, then logs in, and then creates a post which are then displayed on the timeline in chronological order (which means that the latest post will be displayed on the top).
+
 A user can also edit and delete its post, and then can logout. Token-based Authentication is used in this application. Some routes are properly protected which means that only a logged-in user can access them. 
 
 ## Prerequisites
@@ -57,8 +58,11 @@ You have to simply replace the version with 2.5.7 and run the command 'npm insta
 ### Important Commands
 
 1- npm run build (to run the build script from package.json)
+
 2- npm run server-start (to run the server-side / API of the project)
+
 3- npm run client-start (to run the client-side / Front-end of the project)
+
 4- npm run dev-start (it runs project as a whole, which means both client-side and server-side)
 
 ## Built With
@@ -68,8 +72,11 @@ You have to simply replace the version with 2.5.7 and run the command 'npm insta
 Yeoman generator for:
 
 Express with KrakenJS
+
 Mongoose or Sequelize
+
 Sockets.io (Optional)
+
 Bare-bones ReactJS with Webpack and Babel
 
 ## Versioning
