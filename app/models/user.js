@@ -28,24 +28,3 @@ var userSchema = mongoose.Schema({
 userSchema.plugin(uniqueValidator, { message: 'Email or username already exists.' });
 
 let User = module.exports = mongoose.model('User', userSchema);
-
-
-
-
-// var UsersModel = function () {
-
-//   var usersSchema = mongoose.Schema({
-//     email: String
-//   }, { collection: 'users' });
-
-//   usersSchema.statics.getUser = function (userId) {
-//     return this.findOne({ _id: userId }).then(function (user) {
-//       return user;
-//     });
-//   };
-
-//   return mongoose.model('Users', usersSchema);
-
-// };
-
-// module.exports = new UsersModel();
