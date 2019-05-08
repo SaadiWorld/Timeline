@@ -1,7 +1,17 @@
-.navbar {
-  border-radius: 0px; }
 .btn-primary {
   background-color: #1c4663; }
+.navbar {
+  border-radius: 0px; }
+.no-margin {
+  margin: 0; }
+
+/* You can add global styles to this file, and also import other style files */
+a {
+  cursor: pointer; }
+
+body {
+  background-color: #efefef;
+  font-family: Helvetica, sans-serif; }
 * {
   box-sizing: border-box; }
 
@@ -153,13 +163,3 @@
   /* Make all right containers behave like the left ones */
   .right {
     left: 0%; } }
-.no-margin {
-  margin: 0; }
-
-/* You can add global styles to this file, and also import other style files */
-a {
-  cursor: pointer; }
-
-body {
-  background-color: #efefef;
-  font-family: Helvetica, sans-serif; }

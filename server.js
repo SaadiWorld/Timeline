@@ -24,7 +24,7 @@ mongoose.set("debug", true); // mongoose.set('debug', mongoLogger)
 
 mongoose.connect(mongoString, function(error, db) {
   if (error) {
-    global.log.error(err);
+    global.log.error(error); // changed arguement from err to error
   } else {
     global.log.info("Connected to MongoDB");
   }
