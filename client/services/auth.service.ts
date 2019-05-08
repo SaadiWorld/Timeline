@@ -17,21 +17,17 @@ export class AuthService {
   // This is where we actually reach into our backend API and make post request to register
   registerUser(user) {
     // Returning Observable with response
-    return this.http
-      .post("https://mytimelineapp.herokuapp.com/api/v1/users/register", user)
-      .pipe(map(res => res));
+    return this.http.post("/api/v1/users/register", user).pipe(map(res => res));
   }
 
   // This is where we actually reach into our backend API and make post request to login
   authenticateUser(user) {
     // Returning Observable with response
-    return this.http
-      .post("http://localhost:8000/api/v1/users/login", user)
-      .pipe(map(res => res));
+    return this.http.post("/api/v1/users/login", user).pipe(map(res => res));
   }
 
   gettimeline(): any {
-    return this.http.get("http://localhost:8000/api/v1/timeline");
+    return this.http.get("/api/v1/timeline");
   }
 
   // This is where we actually store the logged-in user data in local storage
@@ -58,26 +54,22 @@ export class AuthService {
   }
 
   addEvent(event): any {
-    return this.http
-      .post("http://localhost:8000/api/v1/timeline/add", event)
-      .pipe(map(res => res));
+    return this.http.post("/api/v1/timeline/add", event).pipe(map(res => res));
   }
 
   deletePost(id) {
     return this.http
-      .delete(`http://localhost:8000/api/v1/timeline/delete/${id}`)
+      .delete(`/api/v1/timeline/delete/${id}`)
       .pipe(map(res => res));
   }
 
   getEvent(id) {
-    return this.http
-      .get(`http://localhost:8000/api/v1/timeline/edit/${id}`)
-      .pipe(map(res => res));
+    return this.http.get(`/api/v1/timeline/edit/${id}`).pipe(map(res => res));
   }
 
   editEvent(id, event) {
     return this.http
-      .post(`http://localhost:8000/api/v1/timeline/edit/${id}`, event)
+      .post(`/api/v1/timeline/edit/${id}`, event)
       .pipe(map(res => res));
   }
 }
