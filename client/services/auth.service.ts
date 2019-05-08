@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { HttpHeaders } from "@angular/common/http";
 
-import { map } from 'rxjs/operators';
+import { map } from "rxjs/operators";
 // Because we are working with observables
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable()
 export class AuthService {
@@ -12,39 +12,35 @@ export class AuthService {
   authToken: any;
   user: any;
 
-  constructor(private http: HttpClient,
-    public jwtHelper: JwtHelperService) { }
-
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {}
 
   // This is where we actually reach into our backend API and make post request to register
   registerUser(user) {
     // Returning Observable with response
-    return this.http.post('http://localhost:8000/api/v1/users/register', user)
+    return this.http
+      .post("https://mytimelineapp.herokuapp.com/api/v1/users/register", user)
       .pipe(map(res => res));
   }
-
 
   // This is where we actually reach into our backend API and make post request to login
   authenticateUser(user) {
     // Returning Observable with response
-    return this.http.post('http://localhost:8000/api/v1/users/login', user)
+    return this.http
+      .post("http://localhost:8000/api/v1/users/login", user)
       .pipe(map(res => res));
   }
 
-
   gettimeline(): any {
-    return this.http.get('http://localhost:8000/api/v1/timeline');
+    return this.http.get("http://localhost:8000/api/v1/timeline");
   }
-
 
   // This is where we actually store the logged-in user data in local storage
   storeUserData(token, user) {
-    localStorage.setItem('token_id', token);
-    localStorage.setItem('user_info', JSON.stringify(user));
+    localStorage.setItem("token_id", token);
+    localStorage.setItem("user_info", JSON.stringify(user));
     this.authToken = token;
     this.user = user;
   }
-
 
   loggedIn() {
     if (this.authToken == undefined) {
@@ -61,26 +57,27 @@ export class AuthService {
     localStorage.clear();
   }
 
-
   addEvent(event): any {
-    return this.http.post('http://localhost:8000/api/v1/timeline/add', event)
+    return this.http
+      .post("http://localhost:8000/api/v1/timeline/add", event)
       .pipe(map(res => res));
   }
-
 
   deletePost(id) {
-    return this.http.delete(`http://localhost:8000/api/v1/timeline/delete/${id}`)
+    return this.http
+      .delete(`http://localhost:8000/api/v1/timeline/delete/${id}`)
       .pipe(map(res => res));
   }
 
-
   getEvent(id) {
-    return this.http.get(`http://localhost:8000/api/v1/timeline/edit/${id}`)
+    return this.http
+      .get(`http://localhost:8000/api/v1/timeline/edit/${id}`)
       .pipe(map(res => res));
   }
 
   editEvent(id, event) {
-    return this.http.post(`http://localhost:8000/api/v1/timeline/edit/${id}`, event)
+    return this.http
+      .post(`http://localhost:8000/api/v1/timeline/edit/${id}`, event)
       .pipe(map(res => res));
   }
 }
