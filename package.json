@@ -70,6 +70,7 @@
     "mocha": "^6.1.4",
     "nodemon": "^1.18.11",
     "supertest": "^4.0.2",
+    "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack-cli": "^3.3.1"
   }
 }
